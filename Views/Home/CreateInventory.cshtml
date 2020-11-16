@@ -1,0 +1,36 @@
+﻿@model P1.Models.Inventory
+@{
+    ViewData["Title"] = "CreateInventory";
+}
+
+<h1>Create Inventory</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="CreateInventory">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                @*@Html.DropDownListFor(model => model.CountryList, new SelectList(Model.CountryList, "Id", "CountryName"), new { @class = "form-control" })*@
+                <select class="form-control" asp-for="CountryId" asp-items="@(new SelectList(Model.CountryList,"Id","CountryName"))">
+                    <option>- Select -</option>
+                </select>
+                @*<select asp-for="CountryId" class="form-control">
+                        <option>- Select -</option>
+                        <option value="1">India</option>
+                        <option value="2">USA</option>
+                        <option value="3">Uk</option>
+                    </select>*@
+            </div>
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" asp-for="StartDate" class="form-control" />
+            </div>
+            <div>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
